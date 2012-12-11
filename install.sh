@@ -91,9 +91,14 @@ set_profile_colors() {
 
   # make sure the profile is set to not use theme colors
   gconftool-2 -s -t bool $profile_path/use_theme_colors false
+  gconftool-2 -s -t bool $profile_path/use_theme_background false
 
   # set highlighted color to be different from foreground color
   gconftool-2 -s -t bool $profile_path/bold_color_same_as_fg false
+
+  # set appropriate transpacency
+  gconftool-2 -s -t string $profile_path/background_type 'transparent'
+  gconftool-2 -s -t float $profile_path/background_darkness 0.9
 }
 
 interactive_help() {
